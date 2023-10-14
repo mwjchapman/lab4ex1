@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+font-family : Arial, Helvetica , sans-serif ;
+background-color : #e3f2fd;
+}
+.card {
+padding: 10px;
+}
+.card-title {
+font-weight : 600;
+font-size : 3em;
+padding: 0 0 10px 0;
+}
+.card-description {
+font-weight : 400;
+font-size : 2em
+}
+body2 {
+font-family : Arial, Helvetica , sans-serif ;
+background-color : #e3f2fd;
+}
+.card2 {
+padding: 10px;
+}
+.card-title2 {
+font-weight : 600;
+font-size : 3em;
+padding: 0 0 10px 0;
+}
+.card-description2 {
+font-weight : 400;
+font-size : 2em
+}
+</style>
+</head>
+<body>
+<template id="card-template" >
+<div class="card">
+<div class="card-body" >
+<div class="card-title" ></div>
+<div class="card-text"></div>
+</div>
+</div>
+</template >
+
+<template id="card-template2" >
+  <div class="card2">
+  <div class="card-body2" >
+  <div class="card-title2" ></div>
+  <div class="card-text2"></div>
+  </div>
+  </div>
+  </template >
+
+
+    
+    <div id="card-list"></div>
+    <button onclick="addCard()">New Card</button>
+    <button onclick="addCard2()">Van Gogh info</button>
+
+    <script>
+      function addCard() {
+      const template =
+      document.getElementById("card-template")
+      .content.cloneNode(true);
+      template.querySelector('.card-title').innerText =
+      "People Data";
+      template.querySelector('.card-text').innerText =
+      JSON.stringify([{name: "Bob", age: 23}, {name: "Alice", age: 39}]);
+      document.querySelector('#card-list').appendChild(template);
+      }
+      //addCard();
+        const artist = {
+          name: "Van Gogh",
+          portfolio: [
+            {title: "portrait",
+            url:"https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image"},
+            {title:"sky", 
+            url:"https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg" },
+            ]
+          }
+          
+        
+      function addCard2() {
+      const template2 =
+      document.getElementById("card-template2")
+      .content.cloneNode(true);
+      template2.querySelector('.card-title2').innerText =
+      (artist.name);
+      template2.querySelector('.card-text2').innerText = JSON.stringify(artist);
+      
+      document.querySelector('#card-list').appendChild(template2);
+      }
+      //addCard2();
+      </script>
+  
+  </body>
+</html>
